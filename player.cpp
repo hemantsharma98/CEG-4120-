@@ -1,6 +1,7 @@
 #include <iostream>
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
 #include <string.h>
+//#include <stdlib.h>
 
 //board[0] represents 'GO' location of the board
 using namespace std;
@@ -57,4 +58,4 @@ class Player
 
 
 };
-int Player::pid=0;
+//int Player::pid=0;
