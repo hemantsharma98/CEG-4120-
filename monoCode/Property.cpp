@@ -122,3 +122,17 @@ bool Property::getOwnFour()
 {
     return ownFour;
 }
+
+void Property::printAll() {
+    cout << "Name: " << propName << "\n" <<
+        "Rent: " << rent << "\n" <<
+        "One House Cost: " << oneHouse << "\n" <<
+        "Two Houses Cost: " << twoHouse << "\n" <<
+        "Three Houses Cost: " << threeHouse << "\n" <<
+        "Four Houses Cost: " << fourHouse << "\n" <<
+        "Cost with Hotel: " << hotelCost << "\n" <<
+        "Mortgage: " << mortgageVal << "\n" <<
+        "House Cost: " << houseCost << "\n" <<
+        "Hotel Cost: " << hotelCost << "\n" << endl;
+
+}
