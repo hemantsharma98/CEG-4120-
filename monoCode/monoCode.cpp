@@ -1,34 +1,63 @@
 #include <iostream>
 #include "Property.h"
 #include "Inventory.h"
+#include <fstream>
+#include <sstream>
+#include <string>
 #include <random>
+using std::cout;
+using std::cin;
 using namespace std;
 
 void buildBoard(Property board[40]) {
-    Property p1 = Property();
-    p1.setPropName("North Ave");
-    p1.setRent(12);
-    p1.setOneHouse(60);
-    p1.setTwoHouse(180);
-    p1.setThreeHouse(500);
-    p1.setFourHouse(700);
-    p1.setWithHotel(900);
-    p1.setMortgageVal(80);
-    p1.setHouseCost(100);
-    p1.setHotelCost(100);
-    p1.setOwnFour(false);
+    ifstream file("boarddata.txt");
+    Property tmp = Property();
 
-    Property p2 = Property();
-    p2.setPropName("East Ave");
+    string str;
+    string pName;
+    int pRent;
+    int pOne;
+    int pTwo;
+    int pThree;
+    int pFour;
+    int pWHotel;
+    int pMortgage;
+    int pHouseCost;
+    int pHotelCost;
 
-    Property p3 = Property();
-    p3.setPropName("South Ave");
+    
+    for (int i = 0; i < 40; i++) {
+        
+        getline(file, pName, ',');
 
-    board[0] = p1;
-    board[1] = p2;
-    board[2] = p3;
+        file >> pRent;
+        file >> pOne;
+        file >> pTwo;
+        file >> pThree;
+        file >> pFour;
+        file >> pWHotel;
+        file >> pMortgage;
+        file >> pHouseCost;
+        file >> pHotelCost;
+        file.ignore(1000, '\n');
 
-    //need to either hardcode the data or use a loop and read it from a file. the latter would be better
+
+        tmp.setPropName(pName);
+        tmp.setRent(pRent);
+        tmp.setOneHouse(pOne);
+        tmp.setTwoHouse(pTwo);
+        tmp.setThreeHouse(pThree);
+        tmp.setFourHouse(pFour);
+        tmp.setWithHotel(pWHotel);
+        tmp.setMortgageVal(pMortgage);
+        tmp.setHouseCost(pHouseCost);
+        tmp.setHotelCost(pHotelCost);
+
+        board[i] = tmp;
+    }
+
+
+    
 }
 
 class Player {
@@ -68,8 +97,10 @@ int main()
 {
     Property board[40];
     buildBoard(board);
+    for (int i = 0; i < 40; i++) {
+        board[i].printAll();
+    }
 
-    Player player1 = Player();
 
-    movePlayer(player1);
+    
 }
