@@ -41,4 +41,5 @@ public:
     void setHotelCost(int money);
     void setOwnFour(bool own);
     bool getOwnFour();
+    void printAll();
 };
