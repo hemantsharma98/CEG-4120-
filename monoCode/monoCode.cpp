@@ -84,22 +84,29 @@ bool isDouble(int d1, int d2) {
     return d1 == d2;
 }
 
-void movePlayer(Player p) {
+void movePlayer(Player &p) {
     int d1 = generateOneThruSix();
     int d2 = generateOneThruSix();
-    cout << d1 << " " << d2 << endl;
-    cout << p.inv.getLoc() << endl;
+    cout << "Die one: " << d1 << " Die two is: " << d2 << endl;
+    //add rerolls for doubles
     p.inv.setLoc(d1 + d2);
-    cout << p.inv.getLoc() << endl;
 }
 
 int main()
 {
     Property board[40];
     buildBoard(board);
+    //prints all board spaces to show functionality
     for (int i = 0; i < 40; i++) {
         board[i].printAll();
     }
+    
+    Player p1;
+    p1.inv.setpID(1);
+
+    movePlayer(p1);
+    cout << "Player location index is: " << p1.inv.getLoc() << endl;
+    cout << "Player is on: " << board[p1.inv.getLoc()].getPropName() << endl;
 
 
     
