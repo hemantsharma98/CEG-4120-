@@ -115,10 +115,13 @@ int main()
 
         switch(choice) {
         case 1:
-            
+            cout << "Player ID: " << p1.inv.getpID() << " Player money: " << p1.inv.getMoney() << endl;
+            cout << "Player properties: " << p1.owned << endl;
         case 2:
             movePlayer(p1);
             break;
+        default:
+            cout << "Press 1 to look at your inventory, 2 to move your character, 3 buy the property \n";
         }
     }
 
