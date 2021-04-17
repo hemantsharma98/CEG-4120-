@@ -104,6 +104,26 @@ int main()
     Player p1;
     p1.inv.setpID(1);
 
+    bool gameRun = true;
+    while (gameRun == true) {
+        cout << "Player location index is: " << p1.inv.getLoc() << endl;
+        cout << "Player is on: " << board[p1.inv.getLoc()].getPropName() << endl;
+
+        cout << "Press 1 to look at your inventory, 2 to move your character, 3 buy the property \n";
+        int choice;
+        cin >> choice;
+
+        switch(choice) {
+        case 1:
+            
+        case 2:
+            movePlayer(p1);
+            break;
+        }
+    }
+
+
+
     movePlayer(p1);
     cout << "Player location index is: " << p1.inv.getLoc() << endl;
     cout << "Player is on: " << board[p1.inv.getLoc()].getPropName() << endl;
