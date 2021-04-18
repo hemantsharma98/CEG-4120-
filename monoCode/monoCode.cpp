@@ -89,7 +89,7 @@ void movePlayer(Player &p) {
     int d2 = generateOneThruSix();
     cout << "Die one: " << d1 << " Die two is: " << d2 << endl;
     //add rerolls for doubles
-    p.inv.setLoc(d1 + d2);
+    p.inv.setLoc(p.inv.getLoc() + (d1 + d2));
 }
 
 int main()
