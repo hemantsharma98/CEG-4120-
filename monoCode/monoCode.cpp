@@ -89,7 +89,12 @@ void movePlayer(Player &p) {
     int d2 = generateOneThruSix();
     cout << "Die one: " << d1 << " Die two is: " << d2 << endl;
     //add rerolls for doubles
-    p.inv.setLoc(p.inv.getLoc() + (d1 + d2));
+    if (p.inv.getLoc() + (d1 + d2) < 41) {
+        p.inv.setLoc(p.inv.getLoc() + (d1 + d2));
+    }
+    else {
+        p.inv.setLoc(p.inv.getLoc() + (d1 + d2) - 40);
+    }
 }
 
 int main()
@@ -97,9 +102,10 @@ int main()
     Property board[40];
     buildBoard(board);
     //prints all board spaces to show functionality
-    for (int i = 0; i < 40; i++) {
-        board[i].printAll();
-    }
+    //prints all board spaces to show functionality
+    //for (int i = 0; i < 40; i++) {
+     //   board[i].printAll();
+    //}
     
     Player p1;
     p1.inv.setpID(1);
