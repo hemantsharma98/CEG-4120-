@@ -37,3 +37,23 @@ void Inventory::setLoc(int l)
 {
     loc = l;
 }
+
+int Inventory::getNumPropOwned()
+{
+    return numPropOwned;
+}
+
+void Inventory::setNumPropOwned(int n)
+{
+    numPropOwned = n;
+}
+
+void Inventory::numPropPlusOne()
+{
+    numPropOwned += 1;
+}
+
+void Inventory::numPropMinusOne()
+{
+    numPropOwned -= 1;
+}
