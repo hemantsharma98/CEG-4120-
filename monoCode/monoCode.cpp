@@ -102,11 +102,10 @@ int main()
     Property board[40];
     buildBoard(board);
     //prints all board spaces to show functionality
-    //prints all board spaces to show functionality
     //for (int i = 0; i < 40; i++) {
      //   board[i].printAll();
     //}
-    
+
     Player p1;
     p1.inv.setpID(1);
 
@@ -115,28 +114,48 @@ int main()
         cout << "Player location index is: " << p1.inv.getLoc() << endl;
         cout << "Player is on: " << board[p1.inv.getLoc()].getPropName() << endl;
 
-        cout << "Press 1 to look at your inventory, 2 to move your character, 3 buy the property \n";
+        cout << "Press 1 to look at your inventory, 2 to move your character, 3 buy the property, 0 to quit \n";
         int choice;
         cin >> choice;
 
-        switch(choice) {
+        switch (choice) {
+        case 0: 
+            gameRun = false;
+            break;
         case 1:
             cout << "Player ID: " << p1.inv.getpID() << " Player money: " << p1.inv.getMoney() << endl;
-            cout << "Player properties: " << p1.owned << endl;
+            if (p1.inv.getNumPropOwned() == 0) {
+                cout << "This player owns no properties. " << endl;
+            }
+            else {
+                cout << "Player owns: " << endl;
+                for (int i = 0; i < p1.inv.getNumPropOwned(); i++) {
+                    cout << p1.owned[i].getPropName() << endl;
+                }
+            }
+            break;
         case 2:
             movePlayer(p1);
+            break;
+        case 3:
+            cout << "Would you like to buy: " << board[p1.inv.getLoc()].getPropName() << " for: " << board[p1.inv.getLoc()].getOneHouse() << " ?" << endl;
+            cout << "Enter 1 for yes or 0 for no" << endl;
+            int willBuy;
+            cin >> willBuy;
+            if (willBuy == 1) {
+                if (p1.inv.money >= board[p1.inv.getLoc()].getOneHouse()) {
+                    p1.owned[p1.inv.getNumPropOwned()] = board[p1.inv.getLoc()];
+                    p1.inv.numPropPlusOne();
+                    cout << "Property bought! " << endl;
+                }
+            }
+            else {
+                "You've chosen not to buy this property. It will now go up for auction. ";
+            }
             break;
         default:
             cout << "Press 1 to look at your inventory, 2 to move your character, 3 buy the property \n";
         }
+        cout << "\n"; 
     }
-
-
-
-    movePlayer(p1);
-    cout << "Player location index is: " << p1.inv.getLoc() << endl;
-    cout << "Player is on: " << board[p1.inv.getLoc()].getPropName() << endl;
-
-
-    
 }
