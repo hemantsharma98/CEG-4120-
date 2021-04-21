@@ -89,7 +89,7 @@ void movePlayer(Player &p) {
     int d2 = generateOneThruSix();
     cout << "Die one: " << d1 << " Die two is: " << d2 << endl;
     //add rerolls for doubles
-    if (p.inv.getLoc() + (d1 + d2) < 41) {
+    if (p.inv.getLoc() + (d1 + d2) < 40) {
         p.inv.setLoc(p.inv.getLoc() + (d1 + d2));
     }
     else {
