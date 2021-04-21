@@ -146,6 +146,7 @@ int main()
                 if (p1.inv.money >= board[p1.inv.getLoc()].getOneHouse()) {
                     p1.owned[p1.inv.getNumPropOwned()] = board[p1.inv.getLoc()];
                     p1.inv.numPropPlusOne();
+                    p1.inv.money = p1.inv.money - board[p1.inv.getLoc()].getOneHouse();
                     cout << "Property bought! " << endl;
                 }
             }
