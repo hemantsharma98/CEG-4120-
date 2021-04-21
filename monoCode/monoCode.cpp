@@ -25,9 +25,9 @@ void buildBoard(Property board[40]) {
     int pHouseCost;
     int pHotelCost;
 
-
+    
     for (int i = 0; i < 40; i++) {
-
+        
         getline(file, pName, ',');
 
         file >> pRent;
@@ -57,14 +57,14 @@ void buildBoard(Property board[40]) {
     }
 
 
-
+    
 }
 
 class Player {
 public:
     Inventory inv = Inventory();
     Property owned[30];
-
+    
     Player() {
         inv.setLoc(0);
         inv.setpID(1);
@@ -84,18 +84,17 @@ bool isDouble(int d1, int d2) {
     return d1 == d2;
 }
 
-void movePlayer(Player& p) {
+void movePlayer(Player &p) {
     int d1 = generateOneThruSix();
     int d2 = generateOneThruSix();
     cout << "Die one: " << d1 << " Die two is: " << d2 << endl;
     //add rerolls for doubles
-    if (p.inv.getLoc() + (d1 + d2) < 41) {
+    if (p.inv.getLoc() + (d1 + d2) < 40) {
         p.inv.setLoc(p.inv.getLoc() + (d1 + d2));
     }
     else {
         p.inv.setLoc(p.inv.getLoc() + (d1 + d2) - 40);
     }
-    
 }
 
 int main()
@@ -120,7 +119,7 @@ int main()
         cin >> choice;
 
         switch (choice) {
-        case 0: 
+        case 0:
             gameRun = false;
             break;
         case 1:
@@ -147,6 +146,7 @@ int main()
                 if (p1.inv.money >= board[p1.inv.getLoc()].getOneHouse()) {
                     p1.owned[p1.inv.getNumPropOwned()] = board[p1.inv.getLoc()];
                     p1.inv.numPropPlusOne();
+                    p1.inv.money = p1.inv.money - board[p1.inv.getLoc()].getOneHouse();
                     cout << "Property bought! " << endl;
                 }
             }
@@ -157,6 +157,6 @@ int main()
         default:
             cout << "Press 1 to look at your inventory, 2 to move your character, 3 buy the property \n";
         }
-        cout << "\n"; 
+        cout << "\n";
     }
 }
