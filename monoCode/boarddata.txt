@@ -1,4 +1,4 @@
-GO GO, 0 0 0 0 0 0 0 0 0
+GO, 0 0 0 0 0 0 0 0 0
 Mediterranean Ave, 2 10 30 90 160 250 30 50 50
 Community Chest, 0 0 0 0 0 0 0 0 0
 Baltic Ave, 4 20 60 180 320 450 30 50 50
